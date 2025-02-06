@@ -1,13 +1,9 @@
 body {
-  font-family: Roboto, Arial;
+  font-family: Roboto;
   color: rgb(199, 81, 81);
-  /* The <body> element has a default margin of 8px
-     on all sides. This removes the default margins. */
   margin: 0;
 }
 
-/* <p> elements have a default margin on the top
-   and bottom. This removes the default margins. */
 p {
   margin: 0;
 }
@@ -21,26 +17,26 @@ select {
 }
 
 input, select, button {
-  font-family: Roboto, Arial;
+  font-family: Roboto;
 }
 
 .button-primary {
   color: rgb(33, 33, 33);
-  background-color: rgb(255, 216, 20);
-  border: 1px solid rgb(252, 210, 0);
+  background-color: rgb(247, 208, 15);
+  border: none;
   border-radius: 8px;
   cursor: pointer;
-  box-shadow: 0 2px 5px rgba(213, 217, 217, 0.5);
+  box-shadow: none;
 }
 
 .button-primary:hover {
-  background-color: rgb(247, 202, 0);
-  border: 1px solid rgb(242, 194, 0);
+  background-color: rgb(255, 208, 0);
+  box-shadow: rgb(150, 147, 147) 0px 1px  7px;
+  border: none;
 }
 
 .button-primary:active {
   background: rgb(255, 216, 20);
-  border-color: rgb(252, 210, 0);
   box-shadow: none;
 }
 
@@ -80,22 +76,22 @@ input, select, button {
 }
 
 .link-primary:hover {
-  color: rgb(196, 80, 0);
+  color: rgb(199, 81, 81);
 }
 
 /* Styles for dropdown selectors. */
 select {
   color: rgb(33, 33, 33);
   background-color: rgb(240, 240, 240);
-  border: 1px solid rgb(213, 217, 217);
+  border:none;
   border-radius: 8px;
   padding: 3px 5px;
   font-size: 15px;
   cursor: pointer;
-  box-shadow: 0 2px 5px rgba(213, 217, 217, 0.5);
+  box-shadow: 0 1px 5px rgb(173, 171, 171);
 }
 
 select:focus,
 input:focus {
-  outline: 2px solid rgb(255, 153, 0);
+  outline: 1px solid rgb(255, 153, 0);
 }
