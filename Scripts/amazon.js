@@ -25,6 +25,15 @@ const productsIMG = [{
         stars : 4.5
     },
     priceCents : 799
+},
+{
+  image: 'images/products/men-navigator-sunglasses-brown.jpg',
+  name: 'Men Brown Sunglasses',
+  rating: {
+      numbers : 100,
+      stars : 4
+  },
+  priceCents : 1000
 }
 ];
 let productsHTML = '';
@@ -48,7 +57,7 @@ productsIMG.forEach((EachProduct)=>{
           </div>
 
           <div class="product-price">
-            ${EachProduct.priceCents / 100}
+            $${EachProduct.priceCents / 100}
           </div>
 
           <div class="product-quantity-container">
