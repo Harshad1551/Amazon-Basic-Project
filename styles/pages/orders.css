@@ -16,13 +16,13 @@
 .page-title {
   font-weight: 700;
   font-size: 26px;
-  margin-bottom: 25px;
+  margin-bottom: 20px;
 }
 
 .orders-grid {
   display: grid;
-  grid-template-columns: 1fr;
-  row-gap: 50px;
+  grid-template-columns: 1,1fr;
+  row-gap: 30px;
 }
 
 .order-header {
@@ -97,6 +97,7 @@
   column-gap: 35px;
   row-gap: 60px;
   align-items: center;
+  height: auto;
 }
 
 @media (max-width: 800px) {
