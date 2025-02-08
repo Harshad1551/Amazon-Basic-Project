@@ -46,10 +46,34 @@ products.forEach((EachProduct)=>{
             Added
           </div>
 
-          <button class="add-to-cart-button button-primary">
+          <button class="add-to-cart-button button-primary js-add-to-cart"
+          data-for-product = "${EachProduct.id}">
             Add to Cart
           </button>
         </div>`;
 });
 
 document.querySelector('.js-products-grid').innerHTML = productsHTML; 
+
+document.querySelectorAll('.add-to-cart-button').forEach((button)=>{
+  button.addEventListener('click',()=>{
+ const productID = button.dataset.forProduct;
+let matching;
+
+ cart.forEach((item)=>{
+  if(productID === item.productID){
+    matching = item;
+  }
+ });
+ if(matching){
+  matching.quantity += 1;
+ }
+ else{
+ cart.push({
+  productID: productID,
+  quantity:1
+ })
+}
+    console.log(cart);
+  })
+});
