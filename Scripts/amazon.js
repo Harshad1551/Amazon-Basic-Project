@@ -1,6 +1,9 @@
 // Below data represents the list (data structure:managed data)
 
+import { cart } from "../data/cart.js";// to get the file outside of folder
+
 let productsHTML = '';
+
 products.forEach((EachProduct)=>{
     productsHTML += `   <div class="product-container">
           <div class="product-image-container">
@@ -24,7 +27,7 @@ products.forEach((EachProduct)=>{
             $${(EachProduct.priceCents / 100).toFixed(2)}
           </div>
 
-          <div class="product-quantity-container js-quantity-selector-${products.id}">
+          <div class="product-quantity-container js-quantity-selector-${products.id} select ">
             <select>
               <option selected value="1">1</option>
               <option value="2">2</option>
