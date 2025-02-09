@@ -3,7 +3,7 @@
 //import { cart } from "../data/cart.js"; to get the file outside of folder
 
 import { products } from "../data/products.js";
-
+import { cartPush,updateCart } from "../data/cart.js";
 let productsHTML = '';
 
 products.forEach((EachProduct)=>{
@@ -60,7 +60,7 @@ products.forEach((EachProduct)=>{
 
 document.querySelector('.js-products-grid').innerHTML = productsHTML; 
 
-import { cartPush,updateCart } from "../data/cart.js";
+
 
 document.querySelectorAll('.add-to-cart-button').forEach((button)=>{
   button.addEventListener('click',()=>{
