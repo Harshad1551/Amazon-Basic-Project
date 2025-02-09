@@ -1,6 +1,8 @@
 // Below data represents the list (data structure:managed data)
 
-import { cart } from "../data/cart.js";// to get the file outside of folder
+//import { cart } from "../data/cart.js"; to get the file outside of folder
+
+import { products } from "../data/products.js";
 
 let productsHTML = '';
 
@@ -27,7 +29,7 @@ products.forEach((EachProduct)=>{
             $${(EachProduct.priceCents / 100).toFixed(2)}
           </div>
 
-          <div class="product-quantity-container js-quantity-selector-${products.id} select ">
+          <div class="product-quantity-container ">
             <select>
               <option selected value="1">1</option>
               <option value="2">2</option>
@@ -58,35 +60,14 @@ products.forEach((EachProduct)=>{
 
 document.querySelector('.js-products-grid').innerHTML = productsHTML; 
 
+import { cartPush,updateCart } from "../data/cart.js";
+
 document.querySelectorAll('.add-to-cart-button').forEach((button)=>{
   button.addEventListener('click',()=>{
+
  const productID = button.dataset.forProduct;
- const selectQuantity = document.querySelector(`.js-quantity-selector-${products.id} select`);
- const selector = Number.parseInt(selectQuantity.value, 10); 
- let matching;
-
- cart.forEach((Eachitem)=>{
-  if(productID === Eachitem.productID){
-    matching = Eachitem;
-  }
- });
- if(matching){
-  matching.quantity += selector;
- }
- else{
- cart.push({
-  productID: productID,
-  quantity:selector
+ cartPush(productID);
+ updateCart();
+  
  })
-}
-let totalQuantity = 0;
-cart.forEach((item)=>{
-    totalQuantity += item.quantity;
-})
-console.log(cart);
-document.querySelector('.js-quantity').innerHTML = totalQuantity;
-
-
-
-  })
 });
