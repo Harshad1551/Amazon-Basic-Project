@@ -1,5 +1,6 @@
 import { cart } from "../data/cart.js";
 import { products } from "../data/products.js";
+import { FormatCurrency } from "./utils/money.js";
 
 let cartHTML = '';
 
@@ -28,7 +29,7 @@ cartHTML += ` <div class="cart-item-container">
                   ${matchingID.name}
                 </div>
                 <div class="product-price">
-                  ${matchingID.priceCents/100}
+                  $${FormatCurrency(matchingID.priceCents)}
                 </div>
                 <div class="product-quantity">
                   <span>
@@ -50,7 +51,7 @@ cartHTML += ` <div class="cart-item-container">
                 <div class="delivery-option">
                   <input type="radio" checked
                     class="delivery-option-input"
-                    name="delivery-option-1">
+                    name="delivery-option-${cartID}">
                   <div>
                     <div class="delivery-option-date">
                       Tuesday, June 21
@@ -63,7 +64,7 @@ cartHTML += ` <div class="cart-item-container">
                 <div class="delivery-option">
                   <input type="radio"
                     class="delivery-option-input"
-                    name="delivery-option-1">
+                    name="delivery-option-${cartID}">
                   <div>
                     <div class="delivery-option-date">
                       Wednesday, June 15
@@ -76,7 +77,7 @@ cartHTML += ` <div class="cart-item-container">
                 <div class="delivery-option">
                   <input type="radio"
                     class="delivery-option-input"
-                    name="delivery-option-1">
+                    name="delivery-option-${cartID}">
                   <div>
                     <div class="delivery-option-date">
                       Monday, June 13
@@ -88,7 +89,7 @@ cartHTML += ` <div class="cart-item-container">
                 </div>
               </div>
             </div>
-          </div>;
+          </div>
 `
 });
 
