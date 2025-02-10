@@ -68,7 +68,6 @@ document.querySelectorAll('.add-to-cart-button').forEach((button)=>{
 
  const productID = button.dataset.forProduct;
  cartPush(productID);
- updateCart();
-  
- })
-});
+    updateCart();
+    })
+ });

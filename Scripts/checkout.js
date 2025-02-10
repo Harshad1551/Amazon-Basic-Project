@@ -5,7 +5,7 @@ import { FormatCurrency } from "./utils/money.js";
 let cartHTML = '';
 
 cart.forEach((cartItem)=>{
-const cartID = cartItem.producutID;
+const cartID = cartItem.productID;
 
 let matchingID;
 
@@ -38,7 +38,7 @@ cartHTML += ` <div class="cart-item-container-${cartID} js-single-item">
                   <span class="update-quantity-link link-primary">
                     Update
                   </span>
-                  <span class="delete-quantity-link link-primary js-deleteBTN" data-product-id="${cartItem.producutID}">
+                  <span class="delete-quantity-link link-primary js-deleteBTN" data-product-id="${cartItem.productID}">
                     Delete
                   </span>
                 </div>
