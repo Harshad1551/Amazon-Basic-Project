@@ -2,9 +2,10 @@
 
 //import { cart } from "../data/cart.js"; to get the file outside of folder
 
-import { products } from "../data/products.js";
-import { cartPush,updateCart } from "../data/cart.js";
-import { FormatCurrency } from "./utils/money.js";
+import {products } from "../data/products.js";
+import {cartPush, cart} from "../data/cart.js";
+import {FormatCurrency} from "./utils/money.js";
+
 let productsHTML = '';
 
 products.forEach((EachProduct)=>{
@@ -60,14 +61,26 @@ products.forEach((EachProduct)=>{
 });
 
 document.querySelector('.js-products-grid').innerHTML = productsHTML; 
+let assume = 0;
+document.querySelector('.js-quantity').innerHTML = assume;
+function updateCart () {
+    let totalQuantity = 0;
 
+  cart.forEach((item) => {
+    if(item.quantity === 0){
+      
+    }
+      totalQuantity += item.quantity;
+  });
+  document.querySelector('.js-quantity').innerHTML = totalQuantity;
+  
+  }
 
-
-document.querySelectorAll('.add-to-cart-button').forEach((button)=>{
+document.querySelectorAll('.js-add-to-cart')
+.forEach((button)=>{
   button.addEventListener('click',()=>{
-
  const productID = button.dataset.forProduct;
- cartPush(productID);
+    cartPush(productID);
     updateCart();
-    })
+    });
  });
