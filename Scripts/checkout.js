@@ -1,7 +1,11 @@
 import {cart, removePTD} from "../data/cart.js";
 import {products} from "../data/products.js";
 import {FormatCurrency} from "./utils/money.js";
+import { updateCheckoutCart } from "./utils/CalculateQnt.js";
 
+const todayDate = dayjs();
+const check = todayDate.add(7,'days');
+console.log(check)
 let cartHTML ='';
 
 cart.forEach((cartItem)=>{
@@ -14,7 +18,7 @@ products.forEach((product)=>{
     matchingProduct = product;
   }
 
-})
+});
 
 
 cartHTML += ` 
@@ -37,7 +41,7 @@ cartHTML += `
                   <span>
                     Quantity: <span class="quantity-label">${cartItem.quantity}</span>
                   </span>
-                  <span class="update-quantity-link link-primary">
+                  <span class="update-quantity-link link-primary js-updateBTN" data-update-id="${matchingProduct.id}">
                     Update
                   </span>
                   <span class="delete-quantity-link link-primary js-deleteBTN" data-product-id="${matchingProduct.id}">
@@ -99,26 +103,15 @@ cartHTML += `
 document.querySelector('.js-cart-items')
   .innerHTML = cartHTML;
 
-  function updateCheckoutCart(){
-    let totalQuantity = 0;
-
-    cart.forEach((item) => {
-      if(item.quantity === 0){
-        
-      }
-        totalQuantity += item.quantity;
-    });
-    document.querySelector('.js-total-items').innerHTML = totalQuantity;
-  }
-
+    document.querySelector('.js-total-items').innerHTML = updateCheckoutCart();
+  
 document.querySelectorAll('.js-deleteBTN')
 .forEach((link)=>{
     link.addEventListener('click', ()=>{
        const PTDid = link.dataset.productId;
        removePTD(PTDid);
-      updateCheckoutCart();
       const SingleCart = document.querySelector(`.cart-item-container-${PTDid}`); 
         SingleCart.remove();
+        document.querySelector('.js-total-items').innerHTML = updateCheckoutCart();
     });
 }); 
-updateCheckoutCart();
