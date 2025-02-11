@@ -3,7 +3,7 @@
 //import { cart } from "../data/cart.js"; to get the file outside of folder
 
 import {products } from "../data/products.js";
-import {cartPush, cart} from "../data/cart.js";
+import {cart, saveCart} from "../data/cart.js";
 import {FormatCurrency} from "./utils/money.js";
 
 let productsHTML = '';
@@ -31,8 +31,8 @@ products.forEach((EachProduct)=>{
             $${FormatCurrency(EachProduct.priceCents)}
           </div>
 
-          <div class="product-quantity-container ">
-            <select>
+          <div class="product-quantity-container">
+            <select class="selector-id-${EachProduct.id}">
               <option selected value="1">1</option>
               <option value="2">2</option>
               <option value="3">3</option>
@@ -61,6 +61,7 @@ products.forEach((EachProduct)=>{
 });
 
 document.querySelector('.js-products-grid').innerHTML = productsHTML; 
+
 let assume = 0;
 document.querySelector('.js-quantity').innerHTML = assume;
 function updateCart () {
@@ -75,11 +76,33 @@ function updateCart () {
   document.querySelector('.js-quantity').innerHTML = totalQuantity;
   
   }
+  function cartPush(productID){
+    let matching;
+    const selectID = document.querySelector(`.selector-id-${productID}`)
+    const ToSelect = Number.parseInt(selectID.value, 10);// the 10 is radix which means it is used to give the base for integer
+   
+    cart.forEach((Eachitem) => {
+     if(productID === Eachitem.productID){
+       matching = Eachitem;
+     }
+    });
+    if(matching) {
+     matching.quantity += ToSelect;
+    } else {
+    cart.push({
+     productID: productID,
+     quantity: ToSelect
+    })
+  }
 
+  saveCart();
+}
 document.querySelectorAll('.js-add-to-cart')
 .forEach((button)=>{
   button.addEventListener('click',()=>{
  const productID = button.dataset.forProduct;
+
+ //console.log(ToSelect)
     cartPush(productID);
     updateCart();
     });

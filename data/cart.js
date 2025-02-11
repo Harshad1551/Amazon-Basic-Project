@@ -1,3 +1,5 @@
+
+
 export let cart = JSON.parse(localStorage.getItem('cart'));
 
 if(!cart) {
@@ -10,29 +12,8 @@ cart = [{
   }];
   saveCart();
 }
-function saveCart(){
+export function saveCart(){
   localStorage.setItem('cart', JSON.stringify(cart));
-}
-
-
-export function cartPush(productID){
-    let matching;
-
-    cart.forEach((Eachitem) => {
-     if(productID === Eachitem.productID){
-       matching = Eachitem;
-     }
-    });
-    if(matching) {
-     matching.quantity += 1;
-    } else {
-    cart.push({
-     productID: productID,
-     quantity: 0
-    })
-  }
-
-  saveCart();
 }
 
  export function removePTD(PTDid){
