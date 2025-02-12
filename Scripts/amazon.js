@@ -84,7 +84,8 @@ document.querySelector('.js-quantity').innerHTML = assume;
     } else {
     cart.push({
      productID: productID,
-     quantity: ToSelect
+     quantity: ToSelect,
+     deliveryOptionsID: '1'
     })
   }
 
