@@ -1,4 +1,4 @@
-import {cart, removePTD} from "../data/cart.js";
+import {cart, removePTD, updateDeliveryID} from "../data/cart.js";
 import {products} from "../data/products.js";
 import {FormatCurrency} from "./utils/money.js";
 import { updateCheckoutCart } from "./utils/CalculateQnt.js";
@@ -86,9 +86,10 @@ function deliveryHTML(matchingProductID , cartItem){
       const price = option.priceCents === 0 
       ?'FREE'
       : `$${FormatCurrency(option.priceCents)}`
-
       const isChecked = option.id === cartItem.deliveryOptionsID;
-    HTML += `  <div class="delivery-option">
+    HTML += `  <div class="delivery-option js-delivery-option"
+    data-delivery-id ="${option.id}"
+    data-product-id = "${matchingProductID}">
                   <input type="radio"
                   ${isChecked ? 'checked' : ''}
                     class="delivery-option-input"
@@ -122,3 +123,13 @@ document.querySelectorAll('.js-deleteBTN')
         document.querySelector('.js-total-items').innerHTML = updateCheckoutCart();
     });
 }); 
+document.querySelectorAll('.js-delivery-option')
+  .forEach((link)=>{
+  
+  link.addEventListener('click',()=>{
+   const deliveryID = link.dataset.deliveryId;
+   const productID = link.dataset.productId;
+
+    updateDeliveryID(productID,deliveryID);
+  })
+})
