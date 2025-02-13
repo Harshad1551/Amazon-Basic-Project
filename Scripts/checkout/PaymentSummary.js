@@ -2,7 +2,7 @@ import { cart } from "../../data/cart.js";
 import { toMatchPTD } from "../../data/products.js";
 import { TogetDelivery } from "../../data/deliveryOption.js";
 import { FormatCurrency } from "../utils/money.js";
-import { renderOrderSummary } from "./OrderSummary.js";
+
 export function paymentSummary(){
     let allPTDprice = 0;
     let shippingPrice = 0;

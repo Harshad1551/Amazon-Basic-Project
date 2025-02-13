@@ -1,4 +1,4 @@
-
+import { paymentSummary } from "../Scripts/checkout/PaymentSummary.js";
 export let cart = JSON.parse(localStorage.getItem('cart'));
 
 if(!cart) {
@@ -26,6 +26,7 @@ export function saveCart(){
       });
       cart = newCart;
       saveCart();
+      paymentSummary();
  }
  export function updateDeliveryID(productID,deliveryOption){
   let matching;

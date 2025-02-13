@@ -6,10 +6,7 @@ import dayjs from 'https://unpkg.com/dayjs@1.11.10/esm/index.js';
 import { deliveryOptions,TogetDelivery } from "../../data/deliveryOption.js";
 import { paymentSummary } from "./PaymentSummary.js";
 
-/*const todayDate = dayjs();
-const check = todayDate.add(7,'days');
-console.log(check)
-*/
+
 export function renderOrderSummary(){
 let cartHTML ='';
 
