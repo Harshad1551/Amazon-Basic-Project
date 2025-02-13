@@ -1,3 +1,4 @@
+
 export const deliveryOptions = 
 [{
     id: '1',
@@ -14,3 +15,13 @@ export const deliveryOptions =
 }
 
 ];
+export function TogetDelivery(deliveryOptionID){
+    let matchingDate;
+
+    deliveryOptions.forEach((EachPTD)=>{
+      if(EachPTD.id === deliveryOptionID){
+        matchingDate = EachPTD;
+      }
+    });
+    return matchingDate || matchingDate[0];
+    }
